@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "XXHR_IHRM_DOSSIER_STATUS_TYPE")
+@Table(name = "JBF_DOSSIER_STATUS_TYPE")
 public class DossierStatusType implements Serializable {
 	private static final long serialVersionUID = -279467170362025643L;
 

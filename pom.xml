@@ -90,7 +90,19 @@
 			<scope>test</scope>
 		</dependency>
 		
+		<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>jquery</artifactId>
+		    <version>3.5.1</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>bootstrap</artifactId>
+		    <version>4.6.0</version>
+		</dependency>
 	</dependencies>
+	
 
 	<build>
 		<plugins>
@@ -98,7 +110,54 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<!-- Merged Messages -->
+			<plugin>
+				<groupId>org.polago.maven.plugins</groupId>
+				<artifactId>merge-properties-maven-plugin</artifactId>
+				<configuration>
+					<outputDirectory>src/main/webapp/js/messages</outputDirectory>
+				</configuration>
+				<executions>
+					<execution>
+						<id>merge-en</id>
+						<goals>
+							<goal>merge</goal>
+						</goals>
+						<configuration>
+							<outputFile>MergedMessages_en.properties</outputFile>
+							<resources>
+								<resource>
+									<directory>src/main/webapp/WEB-INF/resourceBundle</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>**/*_en.properties</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>merge-fr</id>
+						<goals>
+							<goal>merge</goal>
+						</goals>
+						<configuration>
+							<outputFile>MergedMessages_fr.properties</outputFile>
+							<resources>
+								<resource>
+									<directory>src/main/webapp/WEB-INF/resourceBundle</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>**/*_fr.properties</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
+		
 	</build>
 
 </project>

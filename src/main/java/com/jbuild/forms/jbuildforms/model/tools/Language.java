@@ -4,14 +4,17 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "XXHR_IHRM_P_LANGUAGE")
+@Table(name = "JBF_LANGUAGE")
 public class Language implements Serializable {
 	private static final long serialVersionUID = -2964077385499766106L;
 
+	
 	private Integer id;
 
 	private String name;
@@ -33,6 +36,7 @@ public class Language implements Serializable {
 
 	@Id
 	@Column(name = "ID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Integer getId() {
 		return this.id;
 	}
@@ -75,7 +79,7 @@ public class Language implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "eu.europa.europarl.apapeople.model.reference.Language[id=" + id + "]";
+		return "model.reference.Language[id=" + id + "]";
 	}
 
 	/**
