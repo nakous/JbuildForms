@@ -37,13 +37,13 @@
 			 
 					<form:form modelAttribute="questionnaireform" id="mainForm" cssClass="form-horizontal" method="post" action="${pageContext.request.contextPath}${actionpath}">
 					
-						<h4 id="section.title">
-							<!-- Filled in by js -->
+						<h4 id="questionnaire.title">
+							<spring:message code="${questionnaire.label.text}"  />
 						</h4>
 
-						<c:if test='${pagenumurl != null && pagenumurl != "0"}'>
-							<c:set var="pagenumber" value="${pagenumurl}" scope="page"/>
-						</c:if>
+						 <p>
+							<spring:message code="${questionnaire.description.text}"/>
+						</p>
 						<form:input type="hidden" path="answerSheet.questionnaireId" value="${questionnaire.id}"/>
 						<form:input type="hidden" path="answerSheet.templateName" value="${templateName}"/>
 						<form:input type="hidden" path="dossierId" value="${dossierId}"/>
@@ -54,19 +54,18 @@
 
 						<c:set var="answerValue1" value="" scope="page"/>
 						<c:forEach items="${questionnaire.sections}" var="section">
-							<c:if test="${section.order == pagenumber}">
-							<%-- 	<spring:message code="${section.label.text}" var="section_label"/>
-								<spring:message code="${section.description.text}" var="section_description"/>
-								<script>
-									$("[id^='questionnaire.title']").append('${section_label}');
-									$("[id^='section.title']").append('${section_description}');
-								</script>
-								--%>
-							</c:if>
-							<div class="row">
-								<c:set var="visibleQuestionIndex" value="0" scope="page"/>
-								<c:forEach items="${section.questions}" var="question" varStatus="stat">
-									<c:if test="${question.visible}">
+						  <div id="section-${section.id}" class="card mt-2">
+							  <div class="card-body">
+								<h4 id="section.title">
+									<spring:message code="${section.label.text}"  />
+								</h4>
+								<p>
+									<spring:message code="${section.description.text}"/>
+								</p>
+								<div class="row">
+									<c:set var="visibleQuestionIndex" value="0" scope="page"/>
+									<c:forEach items="${section.questions}" var="question" varStatus="stat">
+										 
 										<c:if test="${!question.accessible}">
 											<c:if test="${question.appearence == 'subsection'}">
 												<c:set var="visibleQuestionIndex" value="0" scope="page"/>
@@ -88,7 +87,7 @@
 										<c:set var="nextQuestionOrder" value="${section.questions[stat.index+1].order}" scope="page"/>
 										<c:if test="${question.accessible}">
 											<c:set var="answerValue" value=""/>
-											<c:if test="${section.order == pagenumber}">
+											 
 												<c:forEach items="${question.validations}" var="validation">
 													<c:if test="${validation.messageType == 'warning'}">
 														<script>
@@ -181,42 +180,21 @@
 														</script>
 													</c:if>
 												</c:if>
-											</c:if>
-											<c:if test="${section.order != pagenumber}">
-												<form:input type="hidden" path="answerSheet.answers[${question.id}].questionId" value="${question.id}"/>
-												<c:if test="${questionid != null || questionid != ''}">
-													<c:set var="questionid" value="${questionid},${question.id}"/>
-												</c:if>
-												<c:if test="${questionid == null || questionid == ''}">
-													<c:set var="questionid" value="${question.id}"/>
-												</c:if>
-												<c:if test="${question.label!=null}">
-													<q:question-readonly3 question="${question}" answerSheet="${questionnaireform.answerSheet}"></q:question-readonly3>
-												</c:if>
-											</c:if>
-										</c:if>
+											 
+											
+										
 									</c:if>
 									<c:set var="prevQuestionOrder" value="${question.order}" scope="page"/>
 								</c:forEach>
 								<c:set var="visibleQuestionIndex" value="${visibleQuestionIndex + 1}" scope="page"/>
 							</div>
+							</div>
+							</div><!-- Section End -->
 						</c:forEach>
 						<form:input type="hidden" path="questionsRendered" value="${questionid}"/>
 						<input id="action" type="hidden" name="action" value=""/>
 
-						<br/>
-						<div class="row">
-							<c:if test="${previousstep != null && previousstep == true}">
-								<div class="col-md-4">
-									<c:set var="localdonotredir" value="&donotredir=true"/>
-									<a class="btn btn-default pull-right" role="button" href="entitlementsQuestions.html?pagenumurl=<c:out value='${pagenumber-1}'/> <c:out value='${localdonotredir}'/>">
-										<span class="fc-icon fc-icon-left-single-arrow"></span>
-										<spring:message code="previous.step"/>
-									</a>
-								</div>
-							</c:if>
-							 
-						</div>
+						 
 					</form:form>
 			 
 		

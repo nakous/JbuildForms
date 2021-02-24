@@ -111,51 +111,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<!-- Merged Messages -->
-			<plugin>
-				<groupId>org.polago.maven.plugins</groupId>
-				<artifactId>merge-properties-maven-plugin</artifactId>
-				<configuration>
-					<outputDirectory>src/main/webapp/js/messages</outputDirectory>
-				</configuration>
-				<executions>
-					<execution>
-						<id>merge-en</id>
-						<goals>
-							<goal>merge</goal>
-						</goals>
-						<configuration>
-							<outputFile>MergedMessages_en.properties</outputFile>
-							<resources>
-								<resource>
-									<directory>src/main/webapp/WEB-INF/resourceBundle</directory>
-									<filtering>true</filtering>
-									<includes>
-										<include>**/*_en.properties</include>
-									</includes>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-					<execution>
-						<id>merge-fr</id>
-						<goals>
-							<goal>merge</goal>
-						</goals>
-						<configuration>
-							<outputFile>MergedMessages_fr.properties</outputFile>
-							<resources>
-								<resource>
-									<directory>src/main/webapp/WEB-INF/resourceBundle</directory>
-									<filtering>true</filtering>
-									<includes>
-										<include>**/*_fr.properties</include>
-									</includes>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+			
 		</plugins>
 		
 	</build>

@@ -29,13 +29,15 @@ public class JspConfig extends WebMvcConfigurerAdapter
         resolver.setViewClass(JstlView.class);
         registry.viewResolver(resolver);
     }
+    /*
     @Bean(name = "messageSource")
     public ReloadableResourceBundleMessageSource reloadableResourceBundleMessageSource() {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasenames("WEB-INF/resourceBundle/BaseMessages,WEB-INF/resourceBundle/Messages");
-        messageSource.setDefaultEncoding("UTF-8");
-       // messageSource.setFileEncodings();
+      //  messageSource.setBasenames("classpath:resourceBundle/Messages");
+      //  messageSource.setDefaultEncoding("UTF-8");
+        messageSource.setCacheSeconds(1);
+        //messageSource.setFileEncodings(null);
         messageSource.setUseCodeAsDefaultMessage(true);
         return messageSource;
-    }
+    }*/
 }

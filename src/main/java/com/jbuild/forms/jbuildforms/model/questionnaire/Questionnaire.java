@@ -38,6 +38,9 @@ public class Questionnaire implements Serializable {
 	public void setDocGuide(String docGuide) {
 		this.docGuide = docGuide;
 	}
+	
+	@XStreamAlias("description")
+	private Label description;
 
 	/**
 	 * a single translated label in application messages
@@ -140,6 +143,14 @@ public class Questionnaire implements Serializable {
 
 	public void setWorkflowMessages(List<String> workflowMessages) {
 		this.workflowMessages = workflowMessages;
+	}
+
+	public Label getDescription() {
+		return description;
+	}
+
+	public void setDescription(Label description) {
+		this.description = description;
 	}
 	
 	
