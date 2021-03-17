@@ -19,12 +19,14 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.jbuild.forms.jbuildforms.tools.DateUtils;
 
 
 
 @Entity
 @Table(name = "JBF_DOSSIER")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Dossier implements Serializable {
 	private static final long serialVersionUID = -2964077385499766106L;
 

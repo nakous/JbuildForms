@@ -8,7 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 
@@ -33,6 +35,15 @@ public class Role implements java.io.Serializable {
      
     @ManyToMany(mappedBy = "roles")
     private List<User> users;
+    
+    @ManyToMany
+    @JoinTable(
+        name = "JFB_roles_privileges", 
+        joinColumns = @JoinColumn(
+          name = "role_id", referencedColumnName = "role_id"), 
+        inverseJoinColumns = @JoinColumn(
+          name = "privilege_id", referencedColumnName = "id"))
+    private Collection<Privilege> privileges;
 
 
 	public Long getRole_id() {

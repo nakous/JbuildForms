@@ -10,8 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "JBF_PROCESS")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Process implements Serializable {
 	private static final long serialVersionUID = 9074125516408900196L;
 

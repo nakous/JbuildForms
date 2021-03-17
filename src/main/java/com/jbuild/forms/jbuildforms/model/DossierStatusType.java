@@ -4,9 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -30,6 +33,19 @@ public class DossierStatusType implements Serializable {
 	private String prefix;
 
 	private String placement;
+	
+	private Process process;
+	
+	@ManyToOne(targetEntity = Process.class, optional = true, fetch = FetchType.LAZY)
+	@JoinColumn(name = "PROCESS_ID", nullable = true, updatable = false)
+	public Process getProcess() {
+		return process;
+	}
+	
+	public void setProcess(Process process) {
+		this.process = process;
+	}
+
 
 	public DossierStatusType() {
 		super();

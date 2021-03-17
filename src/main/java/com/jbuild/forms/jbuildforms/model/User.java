@@ -42,7 +42,7 @@ public class User implements Serializable {
 
 		@ManyToMany 
 		@JoinTable( 
-	        name = "users_roles", 
+	        name = "JFB_users_roles", 
 	        joinColumns = @JoinColumn(
 	          name = "user_id", referencedColumnName = "user_id"), 
 	        inverseJoinColumns = @JoinColumn(

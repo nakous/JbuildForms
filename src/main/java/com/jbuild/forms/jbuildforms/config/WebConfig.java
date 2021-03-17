@@ -19,6 +19,14 @@ public class WebConfig implements WebMvcConfigurer  {
 	        registry
 	          .addResourceHandler("/webjars/**")
 	          .addResourceLocations("/webjars/");
+	       // registry.addResourceHandler("/pdfs/**")
+            //.addResourceLocations("/WEB-INF/pdfs/");
+
+    registry.addResourceHandler("/css/**")
+            .addResourceLocations("/WEB-INF/css/");
+
+    registry.addResourceHandler("/js/**")
+            .addResourceLocations("/WEB-INF/js/");
 	    }
 	  /*  @Bean
 	    public LocaleResolver localeResolver() {
@@ -30,5 +38,6 @@ public class WebConfig implements WebMvcConfigurer  {
 	        localeChangeInterceptor.setParamName("lang");
 	        registry.addInterceptor(localeChangeInterceptor);
 	    }
+	    
 	
 }
