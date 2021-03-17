@@ -5,4 +5,4 @@ Java Build Form is a free open source project to collect and organize your infor
 
 More details : https://www.onlevelup.com/project-java-build-form-by-multiple-process/
 
-Documentaion : http://www.jbuildforms.com
+Documentation : http://www.jbuildforms.com
